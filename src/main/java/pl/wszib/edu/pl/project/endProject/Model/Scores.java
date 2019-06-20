@@ -11,6 +11,11 @@ public class Scores {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @OneToOne
+    @JoinColumn(name = "resultId")
+    private Results results;
+
     private String gameId;
 
     @ManyToOne
@@ -23,13 +28,13 @@ public class Scores {
     public Scores() {
     }
 
-    public Scores(String gameId, User user, Boolean answer, Date gameDate) {
+    public Scores(Results results, String gameId, User user, Boolean answer, Date gameDate) {
+        this.results = results;
         this.gameId = gameId;
         this.user = user;
         this.answer = answer;
         this.gameDate = gameDate;
     }
-
 
     public Integer getId() {
         return id;
@@ -37,6 +42,14 @@ public class Scores {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Results getResults() {
+        return results;
+    }
+
+    public void setResults(Results results) {
+        this.results = results;
     }
 
     public String getGameId() {
