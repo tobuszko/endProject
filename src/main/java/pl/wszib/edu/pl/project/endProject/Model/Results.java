@@ -1,5 +1,7 @@
 package pl.wszib.edu.pl.project.endProject.Model;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,11 +14,13 @@ public class Results {
     private Integer id;
 
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "gameId")
     private Games game;
     private Long correctAnswer;
     private Long usersAnswer;
+
+    @CreationTimestamp
     private Date gameDate;
 
 

@@ -1,6 +1,9 @@
 package pl.wszib.edu.pl.project.endProject.Model;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -13,7 +16,11 @@ public class User {
     private Integer id;
     private String userId;
     private String password;
+
+    @UpdateTimestamp
     private Date lastLoginDate;
+
+    @CreationTimestamp
     private Date registrationDate;
 
     public User() {

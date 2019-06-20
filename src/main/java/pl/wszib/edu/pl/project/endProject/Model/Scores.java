@@ -1,6 +1,8 @@
 package pl.wszib.edu.pl.project.endProject.Model;
 
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,16 +14,18 @@ public class Scores {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "resultId")
     private Results results;
 
     private String gameId;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "userId")
     private User user;
     private Boolean answer;
+
+    @CreationTimestamp
     private Date gameDate;
 
 
