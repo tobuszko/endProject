@@ -10,12 +10,13 @@ import java.util.Date;
 public class Results {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name = "gameId")
+    @ManyToOne(cascade = {CascadeType.ALL})
+    //@ManyToOne
+    @JoinColumn(name = "game_id")
     private Games game;
     private Long correctAnswer;
     private Long usersAnswer;
