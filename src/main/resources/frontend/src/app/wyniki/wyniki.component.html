@@ -1,0 +1,22 @@
+<div class="resultsContainer">
+  <table class="resultsTable">
+    <thead class="resultsHeader">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">GAME_NAME</th>
+      <th scope="col">CORRECT_ANSWER</th>
+      <th scope="col">USER_ANSWER</th>
+      <th scope="col">GAME_DATE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let result of gameResult">
+      <td>{{ result.id }}</td>
+      <td>{{ result.game }}</td>
+      <td>{{ result.correctAnswer }}</td>
+      <td>{{ result.usersAnswer }}</td>
+      <td>{{ result.gameDate }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

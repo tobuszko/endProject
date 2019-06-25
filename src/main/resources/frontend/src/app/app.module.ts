@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -12,6 +13,8 @@ import { WynikiComponent } from './wyniki/wyniki.component';
 import { SnakeComponent } from './snake/snake.component';
 import { NumbersComponent } from './numbers/numbers.component';
 import { DigitsComponent } from './digits/digits.component';
+import { ResultsServiceService } from './services/results-service.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -41,9 +44,11 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ResultsServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

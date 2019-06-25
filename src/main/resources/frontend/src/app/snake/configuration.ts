@@ -16,8 +16,8 @@ BOARD: '#86B5BD',
 OBSTACLE: '#383522'
 };
 
-export const GAME_MODES = {
-classic: 'Classic',
-no_walls: 'No Walls',
-obstacles: 'Obstacles'
+export const GAME_TYPES = {
+snake: 'SNAKE',
+digits: 'DIGITS',
+numbers: 'NUMBERS'
 };

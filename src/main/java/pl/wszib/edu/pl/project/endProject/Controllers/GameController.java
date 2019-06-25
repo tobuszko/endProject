@@ -10,7 +10,7 @@ import pl.wszib.edu.pl.project.endProject.Service.GameService;
 import java.util.List;
 
 
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class GameController {
 

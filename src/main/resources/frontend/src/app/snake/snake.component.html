@@ -1,0 +1,45 @@
+<div class="main-container" >
+  <p class="snake-info">
+    Znana i prosta gra w węża pożerającego różne obiekty na ekranie może być nudna, ale spóbuj przy okazji zapamiętać pojawiające się na ekranie cyfry.
+    W momencie zakończenia gry sprawdź czy dasz radę odpamiętać co i w jakiej kolejności zostało wyświetlone.
+    Powodzenia!
+  </p>
+
+    <p class="left-number1" *ngIf="leftNumber1Visible">{{leftNumber1Value}}</p>
+    <p class="left-number2" *ngIf="leftNumber2Visible">{{leftNumber2Value}}</p>
+
+
+    <div class="game-container">
+      <div class="row" *ngFor="let column of board; let i = index;">
+        <div class="column" [ngStyle]="{'background-color': setColors(i, j)}" *ngFor="let row of column; let j = index"></div>
+      </div>
+      <div class="start-button" [ngClass]="{'disable-clicks': gameStarted}" (click)="newGame()">Start Game</div>
+    </div>
+
+
+
+
+      <p class="right-number1" *ngIf="rightNumber1Visible">{{rightNumber1Value}}</p>
+      <p class="right-number2" *ngIf="rightNumber2Visible">{{rightNumber2Value}}</p>
+
+
+
+    <div class="test-container" *ngIf="isGameOver">
+      <br>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        <div>
+        <label for="userAnswer">Zapamiętane cyfry:</label><br>
+        <input type="text" name="userAnswer" id="userAnswer" ngModel><br>
+        </div>
+
+        <input type="submit" value="Sprawdź">
+
+        <div *ngIf="answered">
+        <br>Wyświetlone cyfry:
+        <p>{{correctAnswer}}</p>
+        <p>{{answer}}</p>
+        </div>
+      </form>
+    </div>
+
+</div>
