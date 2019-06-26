@@ -28,7 +28,6 @@ public class MainController {
     }
 
 
-
     @GetMapping("login/{userId}{password}")
     public String logIn (@PathVariable("userId") String userId, @PathVariable("password") String password){
         return "test";

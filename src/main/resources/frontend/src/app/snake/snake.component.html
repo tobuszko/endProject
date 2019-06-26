@@ -29,7 +29,7 @@
       <form #f="ngForm" (ngSubmit)="onSubmit(f)">
         <div>
         <label for="userAnswer">Zapamiętane cyfry:</label><br>
-        <input type="text" name="userAnswer" id="userAnswer" ngModel><br>
+        <input type="text" name="userAnswer" autocomplete="off" id="userAnswer" ngModel><br>
         </div>
 
         <input type="submit" value="Sprawdź">

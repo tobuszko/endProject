@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ResultsServiceService } from '../services/results-service.service';
 import { gameResults } from '../gameResults';
+import { gameTypes } from '../gameTypes';
+
 
 @Component({
   selector: 'app-wyniki',
@@ -10,6 +12,7 @@ import { gameResults } from '../gameResults';
 export class WynikiComponent implements OnInit {
 
   gameResult: gameResults[];
+  gameType: gameTypes;
 
   constructor(private resultsService: ResultsServiceService) { }
 
@@ -18,5 +21,7 @@ export class WynikiComponent implements OnInit {
         this.gameResult = data;
     });
   }
+
+
 
 }

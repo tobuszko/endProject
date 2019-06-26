@@ -3,6 +3,8 @@ import { CONTROLS, COLORS, BOARD_SIZE, GAME_TYPES } from './configuration';
 import { NgModule }  from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { gameResults } from '../gameResults';
+import { gameTypes } from '../gameTypes';
+import { ResultsServiceService } from '../services/results-service.service';
 
 @Component({
   selector: 'app-snake',
@@ -27,16 +29,17 @@ export class SnakeComponent implements OnInit {
   public usersAnswer: string;
   private correctAnswer: string;
   private gameResults: gameResults;
+  private gameType: gameTypes;
   private i = 0;
   private answer: string;
   private rightNumber1Value: number;
-  private rightNumber1Visible: false;
+  private rightNumber1Visible: boolean =  false;
   private rightNumber2Value: number;
-  private rightNumber2Visible: false;
+  private rightNumber2Visible: boolean = false;
   private leftNumber1Value: number;
-  private leftNumber1Visible: false;
+  private leftNumber1Visible: boolean =  false;
   private leftNumber2Value: number;
-  private leftNumber2Visible: false;
+  private leftNumber2Visible: boolean = false;
   private boxNumber = 0;
 
 
@@ -57,7 +60,7 @@ export class SnakeComponent implements OnInit {
     };
 
 
-  constructor() {
+  constructor(private resultsService: ResultsServiceService) {
   this.setBoard();
   }
 
@@ -247,8 +250,6 @@ export class SnakeComponent implements OnInit {
 }
 
 
-
-
 gameOver(): void {
     this.isGameOver = true;
     this.gameStarted = false;
@@ -273,30 +274,26 @@ gameOver(): void {
 
 
 onSubmit(f: NgForm) {
-  this.correctAnswer = this.numberRemember.join("");
-
-  console.log(this.correctAnswer);
-
-  if (this.correctAnswer == f.value.userAnswer){
-      this.answer = "Dobra odpowiedź";
-  } else {
-      this.answer = "Błędna odpowiedź";
-  }
-
-  let gameResult = new gameResults(
-  "SNAKE",
-  this.correctAnswer,
-  f.value.userAnswer);
-  this.answered=true;
-  console.log(gameResult);
-    this.numberRemember = [];
-    this.gameResults = null;
-    this.i = 0;
+          this.correctAnswer = this.numberRemember.join("");
+          if (this.correctAnswer == f.value.userAnswer){
+              this.answer = "Dobra odpowiedź";
+          } else {
+              this.answer = "Błędna odpowiedź";
+          }
+              let gameType = new gameTypes("SNAKE");
+              let gameResult = new gameResults(
+              gameType,
+              this.correctAnswer,
+              f.value.userAnswer);
+          this.answered=true;
+          this.resultsService.save(gameResult).subscribe();
+            this.numberRemember = [];
+            this.gameResults = null;
+            this.i = 0;
 }
 
 
   newGame(): void {
-
     this.answered = false;
     this.gameStarted = true;
     this.score = 0;

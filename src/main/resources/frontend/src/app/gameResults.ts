@@ -1,14 +1,16 @@
+import { gameTypes } from './gameTypes';
+
 export class gameResults {
 
   private id: number;
-  private game: string;
+  private game: gameTypes;
   private correctAnswer: string;
   private usersAnswer: string;
-  private gameDate: string;
+  private gameDate: Date;
 
 
   constructor(
-  game: string,
+  game: gameTypes,
   correctAnswer: string,
   usersAnswer: string,
   ) {
@@ -17,6 +19,10 @@ export class gameResults {
       this.usersAnswer = usersAnswer;
   }
 
+  formatDate(): void {
+    this.gameDate.toLocaleDateString('en-Us');
+  }
 
 
 }
+
